@@ -51,10 +51,17 @@
 
 		<!-- AspectJ -->
 		<dependency>
-			<groupId>org.aspectj</groupId>
+			<groupId>org.aspectj</groupId> <!--이것이 AOP 지원하기 위한 라이브러리  -->
 			<artifactId>aspectjrt</artifactId>
 			<version>${org.aspectj-version}</version>
 		</dependency>
+		
+		<!-- https://mvnrepository.com/artifact/org.aspectj/aspectjweaver -->
+      <dependency>
+          <groupId>org.aspectj</groupId> <!--AOP의 위버 설정  -->
+          <artifactId>aspectjweaver</artifactId>
+          <version>${org.aspectj-version}</version>
+      </dependency>   
 
 		<!-- Logging -->
 		<dependency>
