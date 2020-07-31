@@ -34,7 +34,7 @@
              console.log(result);
            //ajax는 그냥 함수이다.
           
-           
+         /*   
            //AJAX 테이블로 출력 방법 1
                 var htmls="";
                
@@ -74,9 +74,9 @@
 
                $("#list-table").append(htmls); 
                
-              
+               */
       
-/*       
+       
 	  //AJAX 테이블로 출력 방법 2
                 
  	  $.each(result, function() {
@@ -89,7 +89,9 @@
      			"</tr>");
      	
      });
-                 
+              
+               
+     //AJAX 테이블로 출력 방법 3
      $.each(result, function(index, entry) {
      	$('#list-table').append("<tr><td>" + entry.bId + "</td>"            			
      			+ "<td>" + entry.bName + "</td>" +  //출력 방법은 2가지이다.
@@ -99,7 +101,7 @@
      			"<td>" + entry["bHit"] + "</td>" + 
      			"</tr>");        
      });    
-       */
+       
       
       
       
