@@ -105,6 +105,13 @@ public class BoardController {
 		return "redirect:list";
 	}
 	
+	@RequestMapping("/ajax/list")
+	public String ajaxList() {
+		
+		log.info("ajaxList");
+		return "ajaxList";
+	}
+	
 	
 	
 }

@@ -10,8 +10,8 @@
 		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd">
 	
 	
-<!-- 	<aop:aspectj-autoproxy></aop:aspectj-autoproxy>
-    <context:component-scan base-package="edu.bit.board.aop"></context:component-scan>    -->
+<!-- 	<aop:aspectj-autoproxy></aop:aspectj-autoproxy> -->
+    <context:component-scan base-package="edu.bit.board.aop"></context:component-scan>    
 	
 	
 	

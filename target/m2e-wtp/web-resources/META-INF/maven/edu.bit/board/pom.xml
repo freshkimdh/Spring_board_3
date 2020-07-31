@@ -199,13 +199,16 @@
 			<version>2.9.6</version>
 		</dependency>
 
+
+		<!--자바객체를 xml로 바꾸는것  -->
 		<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.dataformat/jackson-dataformat-xml -->
 		<dependency>
 			<groupId>com.fasterxml.jackson.dataformat</groupId>
 			<artifactId>jackson-dataformat-xml</artifactId>
 			<version>2.9.6</version>
 		</dependency>
-
+		
+		<!--자바객체를 json로 바꾸는것  -->
 		<!-- https://mvnrepository.com/artifact/com.google.code.gson/gson -->
 		<dependency>
 			<groupId>com.google.code.gson</groupId>
