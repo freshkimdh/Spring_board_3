@@ -3,7 +3,9 @@ package edu.bit.board.controller;
 import java.util.List;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -25,7 +27,6 @@ public class RestBoardSpring4AfterController2 {
 	
 	private BoardService boardService;
 	
-	
 	@RequestMapping("/restful/after")
 	public List<BoardVO> before() {
 	
@@ -36,6 +37,13 @@ public class RestBoardSpring4AfterController2 {
 	
 	}
 	
+	@RequestMapping(value = "/rest/delete/{bId}", method = RequestMethod.DELETE)
+	public int restDelete(@PathVariable("bId") int bId) {
+		
+		log.info("/rest/delete");
+		return boardService.remove(bId);
+		
+	}
 	
 }
 	
