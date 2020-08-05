@@ -41,6 +41,23 @@
          <aop:around pointcut-ref="publicMm" method="loggerAop" />
       </aop:aspect>   
     </aop:config>	
+    
+    
+    <!-- 인터셉터 객체 생성 -->
+	<beans:bean id="boardInterceptor" class="edu.bit.board.interceptor.BoardInterceptor">
+	</beans:bean>
+	
+	<!-- Interceptor 설정 -->
+	<interceptors>
+	    <interceptor>
+	        <mapping path="/list"/>         
+	        <exclude-mapping path="/resources/**"/>
+	        <beans:ref bean="boardInterceptor"/>
+	    </interceptor>
+	</interceptors>
+    
+    
+    
 	
 	
 </beans:beans>

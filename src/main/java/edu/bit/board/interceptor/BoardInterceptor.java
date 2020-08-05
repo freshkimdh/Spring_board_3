@@ -30,19 +30,17 @@ public class LoginController {
       return "login";
    }
    
-   
    @RequestMapping(value = "/login", method = RequestMethod.POST)
    public String login(HttpServletRequest req, RedirectAttributes rttr) throws Exception{
       
       log.info("post login");
       
-      HttpSession session = req.getSession(); //4가지 영역 중에 세션으로 저장한다.
+      HttpSession session = req.getSession();
       
       String id = req.getParameter("id");
       String pw = req.getParameter("pw");
       
       UserVO login = loginservice.logInUser(id,pw);
-      
       
       if(login == null) {
          session.setAttribute("user", null);
@@ -50,22 +48,12 @@ public class LoginController {
       }else {
          session.setAttribute("user", login);
       }
-         return "redirect:/";          
-         
+         return "redirect:/";
+            
+   
    }
    
    
-   @RequestMapping(value = "/logout")
-   public String logout(HttpSession session) throws Exception{
-	   
-	   log.info("/member/logout");
-	      
-	   //invalidate() GC에게 이거는 메모리를 날리라는 대상이라고 알려주는 것!
-	   //session.delete() 이거는 메모리에 남아있는 상태
-	   session.invalidate();
-	   
-	   return "redirect:/";
-   }
    
    
    
