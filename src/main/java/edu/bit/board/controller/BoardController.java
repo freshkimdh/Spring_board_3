@@ -1,13 +1,23 @@
 package edu.bit.board.controller;
 
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.request;
+
+import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import edu.bit.board.page.Criteria;
+import edu.bit.board.page.PageDTO;
 import edu.bit.board.service.BoardService;
 import edu.bit.board.vo.BoardVO;
+import edu.bit.board.vo.RecVO;
+import edu.bit.board.vo.ScoreVO;
+import edu.bit.board.vo.UserVO;
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
 
@@ -30,12 +40,32 @@ public class BoardController {
 //		this.service = service;
 //	}
 	
+	 @GetMapping("/list3")
+	 public void list3(Criteria cri, Model model) {	
+		 log.info("list3");
+		 log.info(cri);
+		 model.addAttribute("list", service.getList(cri));	
+		 
+		 int total = service.getTotal(cri);
+		 log.info("total" + total);
+		 
+		 model.addAttribute("pageMaker", new PageDTO(cri,total));	
+	 }	
+	
+	
+	
+	
+	
 	@GetMapping("/list") // get 방식으로 받아서 getmapping "@RequestMapping" 이것도 사용해도 무관
 	public void list(Model model) { 
+
+		
 	   log.info("list");
 	   model.addAttribute("list", service.getList());
 
 	}	
+	
+	
 	
 	@GetMapping("/content_view") 
 	public String content_view(BoardVO boardVO, Model model) {
@@ -111,6 +141,41 @@ public class BoardController {
 		log.info("ajaxList");
 		return "ajaxList";
 	}
+	
+	
+	@GetMapping("/restful/recArea")
+	public String recArea() {
+		
+		log.info("recArea");
+		return "recAjax";
+	}
+	
+	@ResponseBody
+	@RequestMapping("/restful/recAjax")
+	public Double recArea(RecVO rec) {
+		
+		log.info("recArea");
+		return rec.getArea();
+	}
+	
+	
+	@GetMapping("/restful/Score")
+	public String Score() {
+		
+		log.info("Score");
+		return "scoreSum";
+	}
+	
+	@ResponseBody
+	@RequestMapping("/restful/scoreSum")
+	public Double scoreSum(ScoreVO score) {
+		
+		log.info("scoreSum");
+		return score.getSum();
+	}
+	
+	
+	
 	
 	
 	

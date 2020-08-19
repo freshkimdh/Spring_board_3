@@ -7,6 +7,8 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
+@Getter
+@ToString
 public class PageDTO {
 	//페이징 처리 할때 필요한 정보들
 	private int startPage;//화면에 보여지는 페이지 시작번호

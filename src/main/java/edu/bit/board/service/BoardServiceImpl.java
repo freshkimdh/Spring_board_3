@@ -3,8 +3,10 @@ package edu.bit.board.service;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import edu.bit.board.mapper.BoardMapper;
+import edu.bit.board.page.Criteria;
 import edu.bit.board.vo.BoardVO;
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
@@ -53,6 +55,7 @@ public class BoardServiceImpl implements BoardService {
 		mapper.insertBoard(boardVO);
 	}
 
+	@Transactional(rollbackFor = Exception.class)
 	@Override
 	public void writeReply(BoardVO boardVO) {
 		
@@ -71,6 +74,19 @@ public class BoardServiceImpl implements BoardService {
 		
 		mapper.updateModify(boardVO);
 		
+	}
+
+	//∆‰¿Ã¬° √≥∏Æ 
+	@Override
+	public int getTotal(Criteria cri) {
+		log.info("get total count");
+		return mapper.getTotalCount(cri);
+	}
+
+	@Override
+	public List<BoardVO> getList(Criteria criteria) {
+		log.info("get List with criteria"  + criteria);
+		return mapper.getListWithPaging(criteria);
 	}
 
 	

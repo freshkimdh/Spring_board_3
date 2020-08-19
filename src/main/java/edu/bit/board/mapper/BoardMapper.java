@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Param;
 
+import edu.bit.board.page.Criteria;
 import edu.bit.board.vo.BoardVO;
 
 public interface BoardMapper {
@@ -23,7 +24,7 @@ public interface BoardMapper {
 	public BoardVO read(int bno);
 	
 	@Delete("Delete from mvc_board where bid = #{bno}")
-	public void delete(int bno);
+	public int delete(int bno);
 
 	public void insertBoard(BoardVO boardvo);
 	
@@ -37,5 +38,12 @@ public interface BoardMapper {
 	public void updateModify(BoardVO boardVO);
 	
 	public void addUphit(int bno);
+	
+	//∆‰¿Ã¬° √≥∏Æ
+	public List<BoardVO> getListWithPaging(Criteria cri);
+	
+	public int getTotalCount(Criteria cri);
+	
+	
 
 }
